@@ -186,6 +186,10 @@ for ZFSFEATURE in async_destroy empty_bpobj lz4_compress spacemap_histogram enab
 	zpool set feature@$ZFSFEATURE=enabled $ZPOOL
 done
 zfs set compression=lz4 $ZPOOL
+
+# Disable dedup
+zfs set dedup=off $ZPOOL
+
 # The two properties below improve performance but reduce compatibility with non-Linux ZFS implementations
 # Commented out by default
 #zfs set xattr=sa $ZPOOL
